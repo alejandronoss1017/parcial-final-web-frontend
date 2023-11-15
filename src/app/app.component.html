@@ -1,5 +1,4 @@
 <main class="min-h-screen bg-slate-500">
-
   <section>
     <h1>Create a new book</h1>
 
@@ -8,13 +7,14 @@
       <input id="book-name" type="text" formControlName="name" />
       <label for="library">Select a library: </label>
       <select name="library" id="library" formControlName="library">
-        <option value="1">Library 1</option>
-        <option value="2">Library 2</option>
+        @for (library of libraries; track $index) {
+        <option [value]="library.id">{{ library.name }}</option>
+        }
       </select>
       <button type="submit">Submit</button>
     </form>
   </section>
-
+  
   <section>
     <ul>
       @for (string of stringsList; track $index) {
@@ -23,5 +23,3 @@
     </ul>
   </section>
 </main>
-
-<router-outlet></router-outlet>
